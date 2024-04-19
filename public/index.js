@@ -1,3 +1,19 @@
+// Connect to the server
+const socket = io("http://localhost:3000");
+console.log("🚀 ~ socket:", socket);
+
+// Send a message to the server
+// socket.emit("message", "Hello, server!");
+socket.on("message", (data) => {
+  var loaderAnimation = document.getElementById("loaderAnimation");
+  var newsDiv = document.getElementById("newsDiv");
+  var contentDiv = document.getElementById("content");
+  console.log("Received message from server:", data);
+  contentDiv.innerHTML = data;
+  loaderAnimation.style.display = "none";
+  newsDiv.style.display = "block";
+});
+
 async function fetchNewsFromAPI() {
   const options = {
     method: "GET",
@@ -130,10 +146,11 @@ async function fetchNewsFromAPI() {
         },
       ];
       console.log("🚀 ~ newsArr.forEach ~ newsArr:", newsArr);
+
       newsArr.forEach((item) => {
         const listItem = document.createElement("li");
         const link = document.createElement("a");
-        link.href = item.url;
+
         link.textContent = item.title;
         link.classList.add(
           "block",
@@ -144,6 +161,18 @@ async function fetchNewsFromAPI() {
           "w-fit",
           "px-4"
         );
+        // Add click event listener to each link
+        link.addEventListener("click", function (event) {
+          var loaderAnimation = document.getElementById("loaderAnimation");
+          var listDiv = document.getElementById("listDiv");
+          var newsDiv = document.getElementById("newsDiv");
+          var contentDiv = document.getElementById("content");
+          console.log(event.target.innerHTML);
+          socket.emit("message", event.target.innerHTML);
+          loaderAnimation.style.display = "flex";
+          listDiv.style.display = "none";
+          title.innerText = event.target.innerHTML;
+        });
         listItem.appendChild(link);
         newsList.appendChild(listItem);
       });
@@ -155,3 +184,5 @@ async function fetchNewsFromAPI() {
 }
 
 const newsArr = fetchNewsFromAPI();
+
+// runChat();

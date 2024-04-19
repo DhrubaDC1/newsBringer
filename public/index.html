@@ -10,11 +10,55 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <script
+      src="https://cdn.socket.io/4.7.5/socket.io.min.js"
+      integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="index.js"></script>
   </head>
   <body class="bg-black text-white">
-    <div class="container mx-auto py-8 text-center">
+    <style>
+      /* HTML: <div class="loader"></div> */
+      .loader {
+        width: 60px;
+        aspect-ratio: 1;
+        background: linear-gradient(45deg, #60b99a 50%, #0000 0),
+          linear-gradient(45deg, #0000 50%, #60b99a 0),
+          linear-gradient(-45deg, #f77825 50%, #0000 0),
+          linear-gradient(-45deg, #0000 50%, #f77825 0),
+          linear-gradient(#554236 0 0);
+        background-size: 50% 50%;
+        background-repeat: no-repeat;
+        animation: l18 1.5s infinite;
+      }
+      @keyframes l18 {
+        0% {
+          background-position: 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%;
+        }
+        25% {
+          background-position: 0 100%, 100% 0, 50% 50%, 50% 50%, 50% 50%;
+        }
+        50% {
+          background-position: 0 100%, 100% 0, 100% 100%, 0 0, 50% 50%;
+        }
+        75% {
+          background-position: 50% 50%, 50% 50%, 100% 100%, 0 0, 50% 50%;
+        }
+        100% {
+          background-position: 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%;
+        }
+      }
+    </style>
+    <div
+      id="loaderAnimation"
+      class="flex flex-col justify-center items-center w-screen h-screen hidden"
+    >
+      <div class="loader"></div>
+      <p class="text-xl pt-2">Loading...</p>
+    </div>
+    <div id="listDiv" class="container mx-auto py-8 text-center">
       <p id="title" class="text-8xl py-4 pb-10"></p>
       <ul
         id="newsList"
@@ -22,6 +66,12 @@
       >
         <!-- List items will be dynamically added here -->
       </ul>
+    </div>
+    <div id="newsDiv" class="px-16 hidden">
+      <p class="text-5xl py-8 text-center">
+        Jokowi urges China to expedite Surabaya HSR feasibility study: Retno
+      </p>
+      <div id="content" class="text-xl flex flex-col gap-4 text-justify"></div>
     </div>
   </body>
 </html>
