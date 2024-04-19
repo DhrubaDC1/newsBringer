@@ -50,6 +50,40 @@
           background-position: 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%;
         }
       }
+      .button-62 {
+        background: linear-gradient(to bottom right, #ef4765, #ff9a5a);
+        border: 0;
+        border-radius: 12px;
+        color: #ffffff;
+        cursor: pointer;
+        display: inline-block;
+        font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica,
+          Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 2.5;
+        outline: transparent;
+        padding: 0 1rem;
+        text-align: center;
+        text-decoration: none;
+        transition: box-shadow 0.2s ease-in-out;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        white-space: nowrap;
+      }
+
+      .button-62:not([disabled]):focus {
+        box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5),
+          -0.125rem -0.125rem 1rem rgba(239, 71, 101, 0.5),
+          0.125rem 0.125rem 1rem rgba(255, 154, 90, 0.5);
+      }
+
+      .button-62:not([disabled]):hover {
+        box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5),
+          -0.125rem -0.125rem 1rem rgba(239, 71, 101, 0.5),
+          0.125rem 0.125rem 1rem rgba(255, 154, 90, 0.5);
+      }
     </style>
     <div
       id="loaderAnimation"
@@ -67,8 +101,15 @@
         <!-- List items will be dynamically added here -->
       </ul>
     </div>
-    <div id="newsDiv" class="px-16 hidden">
-      <p class="text-5xl py-8 text-center">
+    <div
+      id="newsDiv"
+      class="flex flex-col items-center justify-center px-16 hidden"
+    >
+      <button class="button-62 absolute top-10 left-10" role="button">
+        Back
+      </button>
+
+      <p class="text-5xl py-8 text-center px-20">
         Jokowi urges China to expedite Surabaya HSR feasibility study: Retno
       </p>
       <div id="content" class="text-xl flex flex-col gap-4 text-justify"></div>

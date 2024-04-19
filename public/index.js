@@ -11,7 +11,7 @@ socket.on("message", (data) => {
   console.log("Received message from server:", data);
   contentDiv.innerHTML = data;
   loaderAnimation.style.display = "none";
-  newsDiv.style.display = "block";
+  newsDiv.style.display = "flex";
 });
 
 async function fetchNewsFromAPI() {
