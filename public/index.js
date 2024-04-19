@@ -13,6 +13,17 @@ socket.on("message", (data) => {
   loaderAnimation.style.display = "none";
   newsDiv.style.display = "flex";
 });
+document.addEventListener("DOMContentLoaded", function () {
+  var listDiv = document.getElementById("listDiv");
+  var newsDiv = document.getElementById("newsDiv");
+  var backButton = document.getElementById("backButton");
+  const title = document.getElementById("title");
+  backButton.addEventListener("click", function (event) {
+    newsDiv.style.display = "none";
+    listDiv.style.display = "block";
+    title.innerText = "Technology News";
+  });
+});
 
 async function fetchNewsFromAPI() {
   const options = {
@@ -156,10 +167,13 @@ async function fetchNewsFromAPI() {
           "block",
           "py-4",
           "hover:bg-opacity-20",
-          "hover:bg-blue-500",
+          "hover:bg-gradient-to-r",
+          "hover:from-[#ef4765]/50",
+          "hover:to-[#ff9a5a]/50",
           "rounded-3xl",
           "w-fit",
-          "px-4"
+          "px-4",
+          "cursor-default"
         );
         // Add click event listener to each link
         link.addEventListener("click", function (event) {
