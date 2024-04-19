@@ -1,0 +1,35 @@
+{
+  "name": "newsbringer",
+  "version": "1.0.0",
+  "description": "Generates news using ai",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DhrubaDC1/newsBringer.git"
+  },
+  "keywords": [
+    "news",
+    "ai"
+  ],
+  "author": "Dhruba Chakraborty",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DhrubaDC1/newsBringer/issues"
+  },
+  "homepage": "https://github.com/DhrubaDC1/newsBringer#readme",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.0"
+  }
+}
